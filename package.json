@@ -11,7 +11,7 @@
   "scripts": {
     "start-dev": "concurrently \"yarn start\" \"yarn sass-watch\"",
     "start": "react-scripts start",
-    "sass-watch":"cd src && sass --watch stylesheets/sass:stylesheets",
+    "sass-watch": "cd src && sass --watch stylesheets/sass:stylesheets",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
