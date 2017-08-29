@@ -1,0 +1,18 @@
+{
+  "name": "test-app-1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.12"
+  },
+  "scripts": {
+    "start-dev": "concurrently \"yarn start\" \"yarn sass-watch\"",
+    "start": "react-scripts start",
+    "sass-watch":"cd src && sass --watch stylesheets/sass:stylesheets",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
