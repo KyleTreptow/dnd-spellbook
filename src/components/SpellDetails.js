@@ -11,7 +11,7 @@ class SpellDetails extends Component {
       return (
         <div className="spell-details">
           <h2>
-            <span className="icon"><img src={logo} className="App-logo" alt="logo" /></span>
+            <span className="icon"><img src={logo} className="app-logo" alt="logo" /></span>
             Select a Spell
           </h2>
           <p>Click a spell to view spell data, or grab a random spell from the spellbook.</p>
