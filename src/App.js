@@ -31,6 +31,12 @@ class App extends Component {
       spellFilter: filteredSpells
     });
   }
+  clearSearch(){
+    this.setState({
+      searchTerm: '',
+      spellFilter: this.props.spellData
+    });
+  }
   randomSpell(e){
     var num = this.props.spellData.length;
     var rando = Math.floor(Math.random() * num) + 1;
@@ -53,6 +59,7 @@ class App extends Component {
                       placeholder="Search by Name"
                       value={this.state.searchTerm}
                       onChange={this.handleChange} />
+                      <button className="btn btn-danger" onClick={() => { this.clearSearch() }}>Clear Search</button>
                   </div>
                 </form>
               </div>
