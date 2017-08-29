@@ -4,7 +4,6 @@ import './stylesheets/App.css';
 import SpellItem from './components/SpellItem.js';
 import SpellDetails from './components/SpellDetails.js';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
