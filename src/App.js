@@ -8,6 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      winWidth: '0',
+      winHeight: '0',
       spellFilter: props.spellData,
       activeSpell: null,
       searchTerm: ''
@@ -15,6 +17,18 @@ class App extends Component {
     this.spellActivate = this.spellActivate.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.randomSpell = this.randomSpell.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  updateWindowDimensions() {
+    this.setState({ winWidth: window.innerWidth, winHeight: window.innerHeight });
+    // console.log('Window Dimensions: '+this.state.winWidth+', '+this.state.winHeight);
+  }
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
   }
   spellActivate(info){
     this.setState({ activeSpell: info });
