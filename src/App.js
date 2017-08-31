@@ -12,7 +12,11 @@ class App extends Component {
       winWidth: 0,
       winHeight: 0,
       mobile: false,
-      sort: 'alpha', // alpha, level...
+      sort: 'alpha',
+      filterLevelTerm: '',
+      filterClassTerm: '',
+      filterSchoolTerm: '',
+      filterBookTerm: '',
       spellFilter: props.spellData,
       activeSpell: null,
       searchTerm: ''
@@ -56,60 +60,54 @@ class App extends Component {
   searchByName(e){
     const target = e.target;
     const value = target.value;
-    var spells = this.props.spellData;
-    var filteredSpells = spells.filter(function(spell){
-      return spell.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
-    });
     this.setState({
-      searchTerm: value,
-      spellFilter: filteredSpells
-    });
+      searchTerm: value
+    }, () => this.mergeAllFilters());
   }
   // 1.0 LEVEL
   filterByLevel(e){
     console.log('Filter by Level: '+e);
-    if( e === '*'){
-      this.setState({ spellFilter: this.props.spellData });
-    } else {
-      var spells = this.props.spellData;
-      var filteredSpells = spells.filter(function(spell){
-        return spell.level.toLowerCase().indexOf(e.toLowerCase()) !== -1;
-      });
-      this.setState({ spellFilter: filteredSpells });
-    }    
+    this.setState({
+      filterLevelTerm: e
+    }, () => this.mergeAllFilters());
   }
   // 2.0 CLASS
   filterByClass(e){
     console.log('Filter by Class: '+e);
-    var spells = this.props.spellData;
-    var filteredSpells = spells.filter(function(spell){
-      return spell.class.toLowerCase().indexOf(e.toLowerCase()) !== -1;
-    });
     this.setState({
-      spellFilter: filteredSpells
-    });
+      filterClassTerm: e
+    }, () => this.mergeAllFilters());
   }
   // 3.0 SCHOOL
   filterBySchool(e){
     console.log('Filter by School: '+e);
-    var spells = this.props.spellData;
-    var filteredSpells = spells.filter(function(spell){
-      return spell.school.toLowerCase().indexOf(e.toLowerCase()) !== -1;
-    });
     this.setState({
-      spellFilter: filteredSpells
-    });
+      filterSchoolTerm: e
+    }, () => this.mergeAllFilters());
   }
   // 4.0 BOOK
   filterByBook(e){
     console.log('Filter by Book: '+e);
-    var spells = this.props.spellData;
-    var filteredSpells = spells.filter(function(spell){
-      return spell.page.toLowerCase().indexOf(e.toLowerCase()) !== -1;
-    });
     this.setState({
-      spellFilter: filteredSpells
+      filterBookTerm: e
+    }, () => this.mergeAllFilters());
+  }
+  mergeAllFilters(){
+    var that = this;
+    var spells = this.props.spellData; // get all spells
+    // filter by level
+    var filteredSpells = spells.filter(function(spell){
+      return spell.level.toLowerCase().indexOf(that.state.filterLevelTerm.toLowerCase()) !== -1;
+    }).filter(function(spell){
+      return spell.class.toLowerCase().indexOf(that.state.filterClassTerm.toLowerCase()) !== -1;
+    }).filter(function(spell){
+      return spell.school.toLowerCase().indexOf(that.state.filterSchoolTerm.toLowerCase()) !== -1;
+    }).filter(function(spell){
+      return spell.page.toLowerCase().indexOf(that.state.filterBookTerm.toLowerCase()) !== -1;
+    }).filter(function(spell){
+      return spell.name.toLowerCase().indexOf(that.state.searchTerm.toLowerCase()) !== -1;
     });
+    this.setState({spellFilter: filteredSpells});
   }
   clearSearch(){
     this.setState({
@@ -127,7 +125,7 @@ class App extends Component {
     return (
       <div className={appClass}>
         <div className="app-inner">
-            <div className="col col-xs-12 col-sm-5 spell-list-wrap">
+            <div className="col col-xs-12 col-sm-7 spell-list-wrap">
               <SpellFilters
                 searchTerm={this.state.searchTerm}
                 searchByName={this.searchByName}
@@ -148,7 +146,7 @@ class App extends Component {
                 )}
               </ul>
             </div>
-            <div className="col col-xs-12 col-sm-7">
+            <div className="col col-xs-12 col-sm-5">
               <div className="well details-well">
                 <SpellDetails
                   spellDetailData={this.state.activeSpell}

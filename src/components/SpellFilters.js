@@ -7,31 +7,40 @@ class SpellFilters extends Component {
       levelVal: 'Level',
       classVal: 'Class',
       schoolVal: 'School',
-      bookVal: 'book'
+      bookVal: 'Book'
     };
   }
   updateLevelFilter(e){
     var index = e.target.selectedIndex;
-    var optionElement = e.target.childNodes[index]
+    var optionElement = e.target.childNodes[index];
     var option =  optionElement.getAttribute('data-val');
     this.setState({
       levelVal: option
     }, () => this.props.filterByLevel(option));
   }
   updateClassFilter(e){
+    var index = e.target.selectedIndex;
+    var optionElement = e.target.childNodes[index];
+    var option =  optionElement.getAttribute('data-val');
     this.setState({
-      classVal: e
-    }, () => this.props.filterByClass(e));
+      classVal: option
+    }, () => this.props.filterByClass(option));
   }
   updateSchoolFilter(e){
+    var index = e.target.selectedIndex;
+    var optionElement = e.target.childNodes[index];
+    var option =  optionElement.getAttribute('data-val');
     this.setState({
-      schoolVal: e
-    }, () => this.props.filterBySchool(e));
+      schoolVal: option
+    }, () => this.props.filterBySchool(option));
   }
   updateBookFilter(e){
+    var index = e.target.selectedIndex;
+    var optionElement = e.target.childNodes[index];
+    var option =  optionElement.getAttribute('data-val');
     this.setState({
-      bookVal: e
-    }, () => this.props.filterByBook(e));
+      bookVal: option
+    }, () => this.props.filterByBook(option));
   }
   render() {
     return (
@@ -61,8 +70,9 @@ class SpellFilters extends Component {
           <li>
             <select className="form-control"
               onChange={ e => this.updateLevelFilter(e)}
-              value={this.state.levelVal} >
-              <option data-val="*">Level</option>
+              value={this.state.levelVal}
+              id="level-select" >
+              <option data-val="">Level</option>
               <option data-val="cantrip">0</option>
               <option data-val="1">1</option>
               <option data-val="2">2</option>
@@ -76,44 +86,47 @@ class SpellFilters extends Component {
           </li>
           <li>
             <select className="form-control"
-              onChange={ e => this.updateClassFilter(e.target.value)}
-              value={this.state.classVal} >
-              <option data-val="*">Class</option>
-              <option>Bard</option>
-              <option>Cleric</option>
-              <option>Druid</option>
-              <option>Paladin</option>
-              <option>Ranger</option>
-              <option>Sorcerer</option>
-              <option>Warlock</option>
-              <option>Wizard</option>
+              onChange={ e => this.updateClassFilter(e)}
+              value={this.state.classVal}
+              id="class-select" >
+              <option data-val="">Class</option>
+              <option data-val="bard">Bard</option>
+              <option data-val="cleric">Cleric</option>
+              <option data-val="druid">Druid</option>
+              <option data-val="paladin">Paladin</option>
+              <option data-val="ranger">Ranger</option>
+              <option data-val="sorcerer">Sorcerer</option>
+              <option data-val="warlock">Warlock</option>
+              <option data-val="wizard">Wizard</option>
             </select>
           </li>
           <li>
             <select className="form-control"
-              onChange={ e => this.updateSchoolFilter(e.target.value)}
-              value={this.state.schoolVal} >
-              <option data-val="*">School</option>
-              <option>Abjuration</option>
-              <option>Conjuration</option>
-              <option>Divination</option>
-              <option>Enchantment </option>
-              <option>Evocation</option>
-              <option>Illusion</option>
-              <option>Necromancy</option>
-              <option>Transmutation</option>
+              onChange={ e => this.updateSchoolFilter(e)}
+              value={this.state.schoolVal}
+              id="school-select" >
+              <option data-val="">School</option>
+              <option data-val="abjuration">Abjuration</option>
+              <option data-val="conjuration">Conjuration</option>
+              <option data-val="divination">Divination</option>
+              <option data-val="enchantment">Enchantment </option>
+              <option data-val="evocation">Evocation</option>
+              <option data-val="illusion">Illusion</option>
+              <option data-val="necromancy">Necromancy</option>
+              <option data-val="transmutation">Transmutation</option>
             </select>
           </li>
           <li>
             <select className="form-control"
-              onChange={ e => this.updateBookFilter(e.target.value)}
-              value={this.state.bookVal} >
-              <option data-val="*">Book</option>
-              <option>PHB</option>
-              <option>EE</option>
-              <option>UA</option>
-              <option>SCAG</option>
-              <option>TROT</option>
+              onChange={ e => this.updateBookFilter(e)}
+              value={this.state.bookVal}
+              id="book-select" >
+              <option data-val="">Book</option>
+              <option data-val="phb">PHB</option>
+              <option data-val="ee">EE</option>
+              <option data-val="ua">UA</option>
+              <option data-val="scag">SCAG</option>
+              <option data-val="trot">TROT</option>
             </select>
           </li>
         </ul>

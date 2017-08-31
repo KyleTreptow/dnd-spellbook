@@ -12,6 +12,13 @@ class SpellItem extends Component {
           {this.props.index+') '}
           <b>{this.props.itemData.name + ' '}</b>
           ({this.props.itemData.level})
+          <ul className="list-inline">
+            <li><small>{this.props.itemData.school}</small></li>
+            <li><small>|</small></li>
+            <li><small>{this.props.itemData.class}</small></li>
+            <li><small>|</small></li>
+            <li><small>{this.props.itemData.page}</small></li>
+          </ul>
           <button className="btn btn-primary" onClick={() => { this.props.spellActivate(this.props.itemData) }} >View Spell</button>
       </li>
     );
