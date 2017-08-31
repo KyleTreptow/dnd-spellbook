@@ -12,14 +12,13 @@ class App extends Component {
       winWidth: 0,
       winHeight: 0,
       mobile: false,
-      sort: 'alpha',
       filterLevelTerm: '',
       filterClassTerm: '',
       filterSchoolTerm: '',
       filterBookTerm: '',
       searchTerm: '',
       spellFilter: props.spellData,
-      activeSpell: null      
+      activeSpell: null
     };
     this.spellActivate = this.spellActivate.bind(this);
     this.searchByName = this.searchByName.bind(this);
@@ -95,7 +94,7 @@ class App extends Component {
   mergeAllFilters(){
     var that = this;
     var spells = this.props.spellData; // get all spells
-    // filter by level
+
     var filteredSpells = spells.filter(function(spell){
       return spell.level.toLowerCase().indexOf(that.state.filterLevelTerm.toLowerCase()) !== -1;
     }).filter(function(spell){
