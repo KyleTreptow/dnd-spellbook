@@ -17,9 +17,9 @@ class App extends Component {
       filterClassTerm: '',
       filterSchoolTerm: '',
       filterBookTerm: '',
+      searchTerm: '',
       spellFilter: props.spellData,
-      activeSpell: null,
-      searchTerm: ''
+      activeSpell: null      
     };
     this.spellActivate = this.spellActivate.bind(this);
     this.searchByName = this.searchByName.bind(this);
