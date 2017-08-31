@@ -1,24 +1,66 @@
+// Transition Mixins
+=transition($prop)
+  -webkit-transition: $prop 0.3s ease-out
+  -moz-transition: $prop 0.3s ease-out
+  -ms-transition: $prop 0.3s ease-out
+  -o-transition: $prop 0.3s ease-out
+  transition: $prop 0.3s ease-out
+
+=transition-2($prop-a, $prop-b)
+  -webkit-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out
+  -moz-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out
+  -ms-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out
+  -o-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out
+  transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out
+
+=transition-3($prop-a, $prop-b, $prop-c)
+  -webkit-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out, $prop-c 0.3s ease-out
+  -moz-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out, $prop-c 0.3s ease-out
+  -ms-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out, $prop-c 0.3s ease-out
+  -o-transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out, $prop-c 0.3s ease-out
+  transition: $prop-a 0.3s ease-out, $prop-b 0.3s ease-out, $prop-c 0.3s ease-out
+
+// Transform Mixins
+=tansform-translate($x, $y)
+  -webkit-transition: translate($x, $y)
+  -moz-transition: translate($x, $y)
+  -ms-transition: translate($x, $y)
+  -o-transform: translate($x, $y)
+  transform: translate($x, $y)
+
+=tansform-rotate($deg)
+  -webkit-transform: rotate($deg)
+  -moz-transform: rotate($deg)
+  -ms-transform: rotate($deg)
+  -o-transform: rotate($deg)
+  transform: rotate($deg)
+
+=tansform-scale($w, $h)
+  -webkit-transform: scale($w, $h)
+  -moz-transform: scale($w, $h)
+  -ms-transform: scale($w, $h)
+  -o-transform: scale($w, $h)
+  transform: scale($w, $h)
+
+
+////////////////////////////////////////
+// General
+////////////////////////////////////////
 .app
   text-align: center
   height: 100vh
   overflow: hidden
 
-.main-content
+.app-inner
   height: 100%
   padding-top: 30px
   padding-bottom: 30px
-  .row, .col
+  .col
     height: 100%
 
-.app-logo
-  animation: app-logo-spin infinite 10s linear
-
-@keyframes app-logo-spin
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(360deg)
-
+////////////////////////////////////////
+// Spell List
+////////////////////////////////////////
 .spell-list
   text-align: left
   height: 100%
@@ -38,10 +80,11 @@
   position: absolute
   top: 7.5px
   right: 15px
-
-.spell-item button
   margin-left: 16px
 
+////////////////////////////////////////
+// Spell Details
+////////////////////////////////////////
 .details-well
   height: 100%
   overflow: hidden
@@ -66,16 +109,24 @@
     img
       height: 100%
 
+.btn-row
+  padding-top: 15px
+
+////////////////////////////////////////
+// Spell Filters
+////////////////////////////////////////
 .spell-list-wrap
-  padding-top: 60px
+  padding-top: 90px
   position: relative
-  .search-input
+  .spell-filters
     position: absolute
+    z-index: 100
     top: 0
     left: 0
     width: 100%
     height: 60px
     padding: 0 15px
+    text-align: left
 
 #search-form
   margin-bottom: 8px
@@ -94,5 +145,36 @@
     right: 0
     height: 100%
 
-.btn-row
-  padding-top: 15px
+.search-form-wrap
+  position: relative
+  .search-form-buttons
+    position: absolute
+    top: 0
+    right: 0
+    height: 100%
+    .btn-clear
+      color: #ddd
+      height: 100%
+      background: transparent
+      border-top-left-radius: 0
+      border-bottom-left-radius: 0
+      border-color: #ddd
+      +transition-2(background-color, color)
+      &:hover,
+      &:focus,
+      &:active
+        color: #a94442
+        background-color: #f2dede
+        border-color: #ebccd1
+
+////////////////////////////////////////
+// Icon Animation
+////////////////////////////////////////
+.app-logo
+  animation: app-logo-spin infinite 10s linear
+
+@keyframes app-logo-spin
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

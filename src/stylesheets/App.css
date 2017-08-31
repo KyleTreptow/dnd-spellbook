@@ -3,21 +3,13 @@
   height: 100vh;
   overflow: hidden; }
 
-.main-content {
+.app-inner {
   height: 100%;
   padding-top: 30px;
   padding-bottom: 30px; }
-  .main-content .row, .main-content .col {
+  .app-inner .col {
     height: 100%; }
 
-.app-logo {
-  animation: app-logo-spin infinite 10s linear; }
-
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
 .spell-list {
   text-align: left;
   height: 100%;
@@ -36,9 +28,7 @@
 .spell-item button {
   position: absolute;
   top: 7.5px;
-  right: 15px; }
-
-.spell-item button {
+  right: 15px;
   margin-left: 16px; }
 
 .details-well {
@@ -65,16 +55,21 @@
     .spell-details .icon img {
       height: 100%; }
 
+.btn-row {
+  padding-top: 15px; }
+
 .spell-list-wrap {
-  padding-top: 60px;
+  padding-top: 90px;
   position: relative; }
-  .spell-list-wrap .search-input {
+  .spell-list-wrap .spell-filters {
     position: absolute;
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px;
-    padding: 0 15px; }
+    padding: 0 15px;
+    text-align: left; }
 
 #search-form {
   margin-bottom: 8px; }
@@ -93,7 +88,37 @@
     right: 0;
     height: 100%; }
 
-.btn-row {
-  padding-top: 15px; }
+.search-form-wrap {
+  position: relative; }
+  .search-form-wrap .search-form-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%; }
+    .search-form-wrap .search-form-buttons .btn-clear {
+      color: #ddd;
+      height: 100%;
+      background: transparent;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-color: #ddd;
+      -webkit-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+      -moz-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+      -ms-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+      -o-transition: background-color 0.3s ease-out, color 0.3s ease-out;
+      transition: background-color 0.3s ease-out, color 0.3s ease-out; }
+      .search-form-wrap .search-form-buttons .btn-clear:hover, .search-form-wrap .search-form-buttons .btn-clear:focus, .search-form-wrap .search-form-buttons .btn-clear:active {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1; }
+
+.app-logo {
+  animation: app-logo-spin infinite 10s linear; }
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 
 /*# sourceMappingURL=App.css.map */
