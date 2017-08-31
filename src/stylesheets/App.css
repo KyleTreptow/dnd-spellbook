@@ -33,13 +33,14 @@
 
 .details-well {
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0; }
 
 .spell-details {
   text-align: left;
   max-height: 100%;
   overflow-y: auto;
-  padding: 0 30px 30px 30px; }
+  padding: 30px; }
   .spell-details .list-inline {
     padding-bottom: 8px;
     border-bottom: solid 1px #ddd; }

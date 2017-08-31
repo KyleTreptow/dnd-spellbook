@@ -13,17 +13,17 @@ class SpellFilters extends Component {
   updateLevelFilter(e){
     var index = e.target.selectedIndex;
     var optionElement = e.target.childNodes[index];
-    var option =  optionElement.getAttribute('data-val');
+    var option = optionElement.getAttribute('data-val');
     this.setState({
-      levelVal: option
+      levelVal: e.target.value
     }, () => this.props.filterByLevel(option));
   }
   updateClassFilter(e){
     var index = e.target.selectedIndex;
     var optionElement = e.target.childNodes[index];
-    var option =  optionElement.getAttribute('data-val');
+    var option = optionElement.getAttribute('data-val');
     this.setState({
-      classVal: option
+      classVal: e.target.value
     }, () => this.props.filterByClass(option));
   }
   updateSchoolFilter(e){
@@ -31,7 +31,7 @@ class SpellFilters extends Component {
     var optionElement = e.target.childNodes[index];
     var option =  optionElement.getAttribute('data-val');
     this.setState({
-      schoolVal: option
+      schoolVal: e.target.value
     }, () => this.props.filterBySchool(option));
   }
   updateBookFilter(e){
@@ -39,7 +39,7 @@ class SpellFilters extends Component {
     var optionElement = e.target.childNodes[index];
     var option =  optionElement.getAttribute('data-val');
     this.setState({
-      bookVal: option
+      bookVal: e.target.value
     }, () => this.props.filterByBook(option));
   }
   render() {

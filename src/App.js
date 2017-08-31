@@ -120,12 +120,17 @@ class App extends Component {
     var rando = Math.floor(Math.random() * num) + 1;
     this.setState({ activeSpell: this.props.spellData[rando] });
   }
+  renderNoSpells(){
+    if(!this.state.spellFilter.length){
+      return(<li>No Spells Found</li>);
+    }
+  }
   render() {
     var appClass = this.state.mobile ? 'app app-mobile' : 'app';
     return (
       <div className={appClass}>
         <div className="app-inner">
-            <div className="col col-xs-12 col-sm-7 spell-list-wrap">
+            <div className="col col-xs-12 col-sm-6 spell-list-wrap">
               <SpellFilters
                 searchTerm={this.state.searchTerm}
                 searchByName={this.searchByName}
@@ -144,9 +149,10 @@ class App extends Component {
                   {item.name}
                   </SpellItem>
                 )}
+                {this.renderNoSpells()}
               </ul>
             </div>
-            <div className="col col-xs-12 col-sm-5">
+            <div className="col col-xs-12 col-sm-6">
               <div className="well details-well">
                 <SpellDetails
                   spellDetailData={this.state.activeSpell}
