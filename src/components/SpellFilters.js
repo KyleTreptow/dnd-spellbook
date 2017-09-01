@@ -42,6 +42,14 @@ class SpellFilters extends Component {
       bookVal: e.target.value
     }, () => this.props.filterByBook(option));
   }
+  clearAllFilters(){
+    this.setState({
+      levelVal: 'Level',
+      classVal: 'Class',
+      schoolVal: 'School',
+      bookVal: 'Book'
+    }, () => this.props.clearSearch());
+  }
   render() {
     return (
       <div className="spell-filters">
@@ -59,11 +67,6 @@ class SpellFilters extends Component {
                 onChange={this.props.searchByName} />
             </div>
           </form>
-          <div className="search-form-buttons">
-            <button className="btn btn-clear" onClick={() => { this.props.clearSearch() }} >
-              <span className="glyphicon glyphicon-remove"></span>
-            </button>
-          </div>
         </div>
         {/* {Filters} */}
         <ul className="list-inline">
@@ -128,6 +131,11 @@ class SpellFilters extends Component {
               <option data-val="scag">SCAG</option>
               <option data-val="trot">TROT</option>
             </select>
+          </li>
+          <li>
+              <button className="btn btn-danger" onClick={() => { this.clearAllFilters() }} >
+                <span className="glyphicon glyphicon-remove"></span>
+              </button>
           </li>
         </ul>
       </div>

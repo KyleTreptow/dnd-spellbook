@@ -10,15 +10,16 @@ class SpellDetails extends Component {
     if(this.props.spellDetailData === null) {
       return (
         <div className="spell-details">
+          <ul className="btn-row list-inline">
+            <li><button className="btn btn-warning" onClick={() => { this.props.randomSpell() }} >
+                <span className="glyphicon glyphicon-question-sign"></span>
+              </button></li>
+          </ul>
           <h2>
             <span className="icon"><img src={logo} className="app-logo" alt="logo" /></span>
             Select a Spell
           </h2>
           <p>Click a spell to view spell data, or grab a random spell from the spellbook.</p>
-          <div className="btn-row">
-            <button className="btn btn-warning" onClick={() => { this.props.randomSpell() }} >
-              Get Random Spell</button>
-          </div>
         </div>
       );
     } else {
@@ -26,6 +27,18 @@ class SpellDetails extends Component {
       var descData = this.props.spellDetailData.desc;
       return (
         <div className="spell-details">
+          <ul className="btn-row list-inline">
+            <li>
+              <button className="btn btn-warning" onClick={() => { this.props.randomSpell() }} >
+                <span className="glyphicon glyphicon-question-sign"></span>
+              </button>
+            </li>
+            <li>
+              <button className="btn btn-danger" onClick={() => { this.props.spellActivate(null) }} >
+                <span className="glyphicon glyphicon-remove"></span>
+              </button>
+            </li>
+          </ul>
           <h2>
             <span className="icon"><img src={logo} className="app-logo" alt="logo" /></span>
             {this.props.spellDetailData.name}
@@ -59,9 +72,6 @@ class SpellDetails extends Component {
             <li><b>Ritual:</b> {this.props.spellDetailData.ritual}</li>
           </ul>
           <p dangerouslySetInnerHTML={createMarkup(descData)} />
-          <div className="btn-row">
-            <button className="btn btn-danger" onClick={() => { this.props.spellActivate(null) }} >Close</button>
-          </div>
         </div>
       );
     }

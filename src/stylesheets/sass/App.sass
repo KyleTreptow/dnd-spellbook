@@ -47,9 +47,11 @@
 // General
 ////////////////////////////////////////
 .app
+  position: relative
   text-align: center
   height: 100vh
   overflow: hidden
+  padding-top: 45px
 
 .app-inner
   height: 100%
@@ -59,12 +61,53 @@
     height: 100%
 
 ////////////////////////////////////////
+// Header
+////////////////////////////////////////
+#header
+  background: #222
+  color: #fff
+  position: absolute
+  z-index: 900
+  top: 0
+  left: 0
+  width: 100%
+  height: 45px
+  text-align: left
+  .list-inline
+    line-height: 15px
+    padding: 15px
+
+#orb
+  animation: app-logo-spin infinite 10s linear
+  background: #61DAFB
+  background: -moz-linear-gradient(top, #61DAFB 0%, #2e6da4 100%)
+  background: -webkit-linear-gradient(top, #61DAFB 0%,#2e6da4 100%)
+  background: linear-gradient(to bottom, #61DAFB 0%,#2e6da4 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61DAFB', endColorstr='#2e6da4',GradientType=0 )
+  width: 80px
+  height: 80px
+  border-radius: 100%
+  position: absolute
+  top: -20px
+  left: 50%
+  margin-left: -40px
+  border: solid 5px #222
+  overflow: hidden
+  box-shadow: inset 0px 0px 24px transparentize(#000, 0.25)
+  &:hover,
+  &:focus,
+  &:active
+    outline: 0
+    // properties
+
+////////////////////////////////////////
 // Spell List
 ////////////////////////////////////////
 .spell-list
   text-align: left
   height: 100%
   overflow-y: auto
+  border: solid 1px #ddd
 
 .spell-item
   display: block
@@ -78,7 +121,7 @@
 
 .spell-item button
   position: absolute
-  top: 7.5px
+  top: 15px
   right: 15px
   margin-left: 16px
 
@@ -94,10 +137,8 @@
   text-align: left
   max-height: 100%
   overflow-y: auto
-  padding: 30px
+  padding:  15px 30px 30px 30px
   .list-inline
-    padding-bottom: 8px
-    border-bottom: solid 1px #ddd
     .pipe
       color: #ddd
   h2
@@ -111,7 +152,9 @@
       height: 100%
 
 .btn-row
-  padding-top: 15px
+  text-align: right
+  border: 0
+  margin-bottom: 15px
 
 ////////////////////////////////////////
 // Spell Filters
@@ -128,6 +171,8 @@
     height: 60px
     padding: 0 15px
     text-align: left
+  @media(min-width: 767px)
+    border-right: solid 1px #eee
 
 #search-form
   margin-bottom: 8px
@@ -153,20 +198,6 @@
     top: 0
     right: 0
     height: 100%
-    .btn-clear
-      color: #ddd
-      height: 100%
-      background: transparent
-      border-top-left-radius: 0
-      border-bottom-left-radius: 0
-      border-color: #ddd
-      +transition-2(background-color, color)
-      &:hover,
-      &:focus,
-      &:active
-        color: #a94442
-        background-color: #f2dede
-        border-color: #ebccd1
 
 ////////////////////////////////////////
 // Icon Animation
@@ -179,3 +210,35 @@
     transform: rotate(0deg)
   to
     transform: rotate(360deg)
+
+.double-bounce1,
+.double-bounce2
+  width: 100%
+  height: 100%
+  border-radius: 50%
+  background-color: #61DAFB
+  opacity: 0.25
+  position: absolute
+  top: 0
+  left: 0
+  -webkit-animation: sk-bounce 8.0s infinite ease-in-out
+  animation: sk-bounce 8.0s infinite ease-in-out
+  box-shadow: 0 0 20px transparentize(#61DAFB, 0.25)
+
+.double-bounce2
+  -webkit-animation-delay: -4.0s
+  animation-delay: -4.0s
+
+@-webkit-keyframes sk-bounce
+  0%, 100%
+    -webkit-transform: scale(0.0)
+  50%
+    webkit-transform: scale(1.0)
+
+@keyframes sk-bounce
+  0%, 100%
+    transform: scale(0.0)
+    -webkit-transform: scale(0.0)
+  50%
+    transform: scale(1.0)
+    -webkit-transform: scale(1.0)

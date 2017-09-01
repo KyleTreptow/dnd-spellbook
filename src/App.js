@@ -4,6 +4,7 @@ import './stylesheets/App.css';
 import SpellItem from './components/SpellItem.js';
 import SpellDetails from './components/SpellDetails.js';
 import SpellFilters from './components/SpellFilters.js';
+import Header from './components/Header.js';
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class App extends Component {
       filterSchoolTerm: '',
       filterBookTerm: '',
       searchTerm: '',
-      spellFilter: props.spellData,
       activeSpell: null
     };
     this.spellActivate = this.spellActivate.bind(this);
@@ -61,57 +61,43 @@ class App extends Component {
     const value = target.value;
     this.setState({
       searchTerm: value
-    }, () => this.mergeAllFilters());
+    });
   }
   // 1.0 LEVEL
   filterByLevel(e){
     console.log('Filter by Level: '+e);
     this.setState({
       filterLevelTerm: e
-    }, () => this.mergeAllFilters());
+    });
   }
   // 2.0 CLASS
   filterByClass(e){
     console.log('Filter by Class: '+e);
     this.setState({
       filterClassTerm: e
-    }, () => this.mergeAllFilters());
+    });
   }
   // 3.0 SCHOOL
   filterBySchool(e){
     console.log('Filter by School: '+e);
     this.setState({
       filterSchoolTerm: e
-    }, () => this.mergeAllFilters());
+    });
   }
   // 4.0 BOOK
   filterByBook(e){
     console.log('Filter by Book: '+e);
     this.setState({
       filterBookTerm: e
-    }, () => this.mergeAllFilters());
-  }
-  mergeAllFilters(){
-    var that = this;
-    var spells = this.props.spellData; // get all spells
-
-    var filteredSpells = spells.filter(function(spell){
-      return spell.level.toLowerCase().indexOf(that.state.filterLevelTerm.toLowerCase()) !== -1;
-    }).filter(function(spell){
-      return spell.class.toLowerCase().indexOf(that.state.filterClassTerm.toLowerCase()) !== -1;
-    }).filter(function(spell){
-      return spell.school.toLowerCase().indexOf(that.state.filterSchoolTerm.toLowerCase()) !== -1;
-    }).filter(function(spell){
-      return spell.page.toLowerCase().indexOf(that.state.filterBookTerm.toLowerCase()) !== -1;
-    }).filter(function(spell){
-      return spell.name.toLowerCase().indexOf(that.state.searchTerm.toLowerCase()) !== -1;
     });
-    this.setState({spellFilter: filteredSpells});
   }
   clearSearch(){
     this.setState({
       searchTerm: '',
-      spellFilter: this.props.spellData
+      filterLevelTerm: '',
+      filterClassTerm: '',
+      filterSchoolTerm: '',
+      filterBookTerm: ''
     });
   }
   randomSpell(e){
@@ -119,15 +105,33 @@ class App extends Component {
     var rando = Math.floor(Math.random() * num) + 1;
     this.setState({ activeSpell: this.props.spellData[rando] });
   }
-  renderNoSpells(){
-    if(!this.state.spellFilter.length){
-      return(<li>No Spells Found</li>);
+  renderNoSpells(spells){
+    if(!spells.length){
+      return(<li className="spell-item">No Spells Found</li>);
     }
   }
   render() {
+    // app class for layout (mobile || desktop)
     var appClass = this.state.mobile ? 'app app-mobile' : 'app';
+    // spell filtering...
+    var runFilter = function(arr, term, property){
+      // enter array of data, filter term, & property to filter by... iterate
+      return arr.filter(function(item){
+        return item[property].toLowerCase().indexOf(term.toLowerCase()) !== -1;
+      });
+    }
+    var spells = this.props.spellData;
+    spells = runFilter(spells, this.state.filterLevelTerm, 'level');
+    spells = runFilter(spells, this.state.filterClassTerm, 'class');
+    spells = runFilter(spells, this.state.filterSchoolTerm, 'school');
+    spells = runFilter(spells, this.state.filterBookTerm, 'page');
+    spells = runFilter(spells, this.state.searchTerm, 'name');
+
+    console.log('# rendering: '+spells.length);
+
     return (
       <div className={appClass}>
+        <Header randomSpell={this.randomSpell} />
         <div className="app-inner">
             <div className="col col-xs-12 col-sm-6 spell-list-wrap">
               <SpellFilters
@@ -139,7 +143,7 @@ class App extends Component {
                 filterByBook={this.filterByBook}
                 clearSearch={this.clearSearch} />
               <ul className="list-unstyled spell-list">
-                { this.state.spellFilter.map((item, i) =>
+                { spells.map((item, i) =>
                   <SpellItem
                     key={i}
                     itemData={item}
@@ -148,7 +152,7 @@ class App extends Component {
                   {item.name}
                   </SpellItem>
                 )}
-                {this.renderNoSpells()}
+                {this.renderNoSpells(spells)}
               </ul>
             </div>
             <div className="col col-xs-12 col-sm-6">
