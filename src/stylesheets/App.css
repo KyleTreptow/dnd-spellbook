@@ -32,7 +32,7 @@
   background: -moz-linear-gradient(top, #61DAFB 0%, #2e6da4 100%);
   background: -webkit-linear-gradient(top, #61DAFB 0%, #2e6da4 100%);
   background: linear-gradient(to bottom, #61DAFB 0%, #2e6da4 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61DAFB', endColorstr='#2e6da4',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
   width: 80px;
   height: 80px;
   border-radius: 100%;
@@ -54,19 +54,85 @@
 
 .spell-item {
   display: block;
-  padding: 15px 120px 15px 15px;
+  padding: 15px 120px 15px 60px;
   position: relative;
   border-bottom: solid 1px #ddd; }
   .spell-item:first-child {
     border-top: solid 1px #ddd; }
   .spell-item.alt {
     background: #f5f5f5; }
-
-.spell-item button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  margin-left: 16px; }
+  .spell-item::before {
+    animation: app-logo-spin infinite 10s linear;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #ccc; }
+  .spell-item.abjuration::before {
+    background: #d84b3e;
+    background: -moz-linear-gradient(top, #d84b3e 0%, #e68b82 100%);
+    background: -webkit-linear-gradient(top, #d84b3e 0%, #e68b82 100%);
+    background: linear-gradient(to bottom, #d84b3e 0%, #e68b82 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(117, 32, 24, 0.85); }
+  .spell-item.conjuration::before {
+    background: #eca127;
+    background: -moz-linear-gradient(top, #eca127 0%, #f2c171 100%);
+    background: -webkit-linear-gradient(top, #eca127 0%, #f2c171 100%);
+    background: linear-gradient(to bottom, #eca127 0%, #f2c171 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(125, 82, 11, 0.85); }
+  .spell-item.divination::before {
+    background: #8c4297;
+    background: -moz-linear-gradient(top, #8c4297 0%, #b46cbe 100%);
+    background: -webkit-linear-gradient(top, #8c4297 0%, #b46cbe 100%);
+    background: linear-gradient(to bottom, #8c4297 0%, #b46cbe 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(51, 24, 55, 0.85); }
+  .spell-item.enchantment::before {
+    background: #0e5e97;
+    background: -moz-linear-gradient(top, #0e5e97 0%, #148ce1 100%);
+    background: -webkit-linear-gradient(top, #0e5e97 0%, #148ce1 100%);
+    background: linear-gradient(to bottom, #0e5e97 0%, #148ce1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(2, 15, 24, 0.85); }
+  .spell-item.evocation::before {
+    background: #d92e57;
+    background: -moz-linear-gradient(top, #d92e57 0%, #e5728f 100%);
+    background: -webkit-linear-gradient(top, #d92e57 0%, #e5728f 100%);
+    background: linear-gradient(to bottom, #d92e57 0%, #e5728f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(105, 19, 40, 0.85); }
+  .spell-item.illusion::before {
+    background: #51b0b7;
+    background: -moz-linear-gradient(top, #51b0b7 0%, #8bcacf 100%);
+    background: -webkit-linear-gradient(top, #51b0b7 0%, #8bcacf 100%);
+    background: linear-gradient(to bottom, #51b0b7 0%, #8bcacf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(37, 86, 89, 0.85); }
+  .spell-item.necromancy::before {
+    background: #363558;
+    background: -moz-linear-gradient(top, #363558 0%, #54538c 100%);
+    background: -webkit-linear-gradient(top, #363558 0%, #54538c 100%);
+    background: linear-gradient(to bottom, #363558 0%, #54538c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(1, 1, 2, 0.85); }
+  .spell-item.transmutation::before {
+    background: #076b33;
+    background: -moz-linear-gradient(top, #076b33 0%, #0bb759 100%);
+    background: -webkit-linear-gradient(top, #076b33 0%, #0bb759 100%);
+    background: linear-gradient(to bottom, #076b33 0%, #0bb759 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.85); }
+  .spell-item button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin-left: 16px; }
 
 .details-well {
   height: 100%;
@@ -144,12 +210,14 @@
   to {
     transform: rotate(360deg); } }
 .double-bounce1,
-.double-bounce2 {
+.double-bounce2,
+.double-bounce3,
+.double-bounce4 {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background-color: #61DAFB;
-  opacity: 0.25;
+  opacity: 0.15;
   position: absolute;
   top: 0;
   left: 0;
@@ -160,6 +228,14 @@
 .double-bounce2 {
   -webkit-animation-delay: -4s;
   animation-delay: -4s; }
+
+.double-bounce3 {
+  -webkit-animation-delay: -2s;
+  animation-delay: -2s; }
+
+.double-bounce3 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s; }
 
 @-webkit-keyframes sk-bounce {
   0%, 100% {

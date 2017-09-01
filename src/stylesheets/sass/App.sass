@@ -43,6 +43,13 @@
   transform: scale($w, $h)
 
 
+=grad-bg($clr-a, $clr-b)
+  background: $clr-a
+  background: -moz-linear-gradient(top, $clr-a 0%, $clr-b 100%)
+  background: -webkit-linear-gradient(top, $clr-a 0%, $clr-b 100%)
+  background: linear-gradient(to bottom, $clr-a 0%, $clr-b 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 )
+
 ////////////////////////////////////////
 // General
 ////////////////////////////////////////
@@ -79,11 +86,7 @@
 
 #orb
   animation: app-logo-spin infinite 10s linear
-  background: #61DAFB
-  background: -moz-linear-gradient(top, #61DAFB 0%, #2e6da4 100%)
-  background: -webkit-linear-gradient(top, #61DAFB 0%,#2e6da4 100%)
-  background: linear-gradient(to bottom, #61DAFB 0%,#2e6da4 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61DAFB', endColorstr='#2e6da4',GradientType=0 )
+  +grad-bg(#61DAFB, #2e6da4)
   width: 80px
   height: 80px
   border-radius: 100%
@@ -98,7 +101,6 @@
   &:focus,
   &:active
     outline: 0
-    // properties
 
 ////////////////////////////////////////
 // Spell List
@@ -109,21 +111,92 @@
   overflow-y: auto
   border: solid 1px #ddd
 
+// Abjuration (Orange)
+$clr-abjuration: #df6b60
+// Conjuration (Yellow)
+$clr-conjuration: #efb14c
+// Divination (Light Purple)
+$clr-divination: #a550b2
+// Enchantment (Dark Blue)
+$clr-enchantment: #1175bc
+// Evocation (Red)
+$clr-evocation: #df5073
+// Illusion (Light Blue)
+$clr-illusion: #6ebdc3
+// Necromancy (Dark Purple)
+$clr-necromancy: #454472
+// Transmutation (Green)
+$clr-transmutation: #099146
+
 .spell-item
   display: block
-  padding: 15px 120px 15px 15px
+  padding: 15px 120px 15px 60px
   position: relative
   border-bottom: solid 1px #ddd
   &:first-child
     border-top: solid 1px #ddd
   &.alt
     background: #f5f5f5
+  &::before
+    animation: app-logo-spin infinite 10s linear
+    content: ''
+    display: block
+    position: absolute
+    top: 15px
+    left: 15px
+    width: 30px
+    height: 30px
+    border-radius: 100%
+    background-color: #ccc
+  &.abjuration
+    &::before
+      // background-color: $clr-abjuration
+      +grad-bg(darken($clr-abjuration, 8%), lighten($clr-abjuration, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-abjuration, 35%), 0.15)
+  &.conjuration
+    &::before
+      // background-color: $clr-conjuration
+      +grad-bg(darken($clr-conjuration, 8%), lighten($clr-conjuration, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-conjuration, 35%), 0.15)
+  &.divination
+    &::before
+      // background-color: $clr-divination
+      +grad-bg(darken($clr-divination, 8%), lighten($clr-divination, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-divination, 35%), 0.15)
+  &.enchantment
+    &::before
+      // background-color: $clr-enchantment
+      +grad-bg(darken($clr-enchantment, 8%), lighten($clr-enchantment, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-enchantment, 35%), 0.15)
+  &.evocation
+    &::before
+      // background-color: $clr-evocation
+      +grad-bg(darken($clr-evocation, 8%), lighten($clr-evocation, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-evocation, 35%), 0.15)
+  &.illusion
+    &::before
+      // background-color: $clr-illusion
+      +grad-bg(darken($clr-illusion, 8%), lighten($clr-illusion, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-illusion, 35%), 0.15)
+  &.necromancy
+    &::before
+      // background-color: $clr-necromancy
+      +grad-bg(darken($clr-necromancy, 8%), lighten($clr-necromancy, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-necromancy, 35%), 0.15)
+  &.transmutation
+    &::before
+      // background-color: $clr-transmutation
+      +grad-bg(darken($clr-transmutation, 8%), lighten($clr-transmutation, 8%))
+      box-shadow: inset 0px 0px 10px transparentize(darken($clr-transmutation, 35%), 0.15)
+  button
+    position: absolute
+    top: 15px
+    right: 15px
+    margin-left: 16px
 
-.spell-item button
-  position: absolute
-  top: 15px
-  right: 15px
-  margin-left: 16px
+
+
+
 
 ////////////////////////////////////////
 // Spell Details
@@ -212,12 +285,14 @@
     transform: rotate(360deg)
 
 .double-bounce1,
-.double-bounce2
+.double-bounce2,
+.double-bounce3,
+.double-bounce4
   width: 100%
   height: 100%
   border-radius: 50%
   background-color: #61DAFB
-  opacity: 0.25
+  opacity: 0.15
   position: absolute
   top: 0
   left: 0
@@ -228,6 +303,14 @@
 .double-bounce2
   -webkit-animation-delay: -4.0s
   animation-delay: -4.0s
+
+.double-bounce3
+  -webkit-animation-delay: -2.0s
+  animation-delay: -2.0s
+
+.double-bounce3
+  -webkit-animation-delay: -1.0s
+  animation-delay: -1.0s
 
 @-webkit-keyframes sk-bounce
   0%, 100%

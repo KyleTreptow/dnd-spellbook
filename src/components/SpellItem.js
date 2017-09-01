@@ -6,8 +6,8 @@ class SpellItem extends Component {
     this.state = {};
   }
   render() {
-    var liClass = this.props.index % 2 === 0 ? 'spell-item' : 'spell-item alt';
     var itemSchool = this.props.itemData.school.toLowerCase();
+    var liClass = this.props.index % 2 === 0 ? 'spell-item '+itemSchool : 'spell-item alt '+itemSchool;
     return (
       <li className={liClass} data-index={this.props.index} data-school={itemSchool}>
           <b>{this.props.itemData.name + ' '}</b>
