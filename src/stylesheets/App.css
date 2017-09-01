@@ -71,7 +71,13 @@
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    background-color: #ccc; }
+    background-color: #ccc;
+    background: #b8b8b8;
+    background: -moz-linear-gradient(top, #b8b8b8 0%, #e0e0e0 100%);
+    background: -webkit-linear-gradient(top, #b8b8b8 0%, #e0e0e0 100%);
+    background: linear-gradient(to bottom, #b8b8b8 0%, #e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=0 );
+    box-shadow: inset 0px 0px 10px rgba(115, 115, 115, 0.85); }
   .spell-item.abjuration::before {
     background: #d84b3e;
     background: -moz-linear-gradient(top, #d84b3e 0%, #e68b82 100%);

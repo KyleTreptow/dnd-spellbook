@@ -148,6 +148,8 @@ $clr-transmutation: #099146
     height: 30px
     border-radius: 100%
     background-color: #ccc
+    +grad-bg(darken(#ccc, 8%), lighten(#ccc, 8%))
+    box-shadow: inset 0px 0px 10px transparentize(darken(#ccc, 35%), 0.15)
   &.abjuration
     &::before
       // background-color: $clr-abjuration

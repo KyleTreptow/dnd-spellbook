@@ -107,7 +107,14 @@ class App extends Component {
   }
   renderNoSpells(spells){
     if(!spells.length){
-      return(<li className="spell-item">No Spells Found</li>);
+      return(
+        <li className="spell-item">
+          <b>No Spells Found</b>
+          <ul className="list-inline">
+            <li>No Details</li>
+          </ul>
+        </li>
+      );
     }
   }
   render() {
