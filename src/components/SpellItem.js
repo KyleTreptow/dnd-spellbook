@@ -7,8 +7,9 @@ class SpellItem extends Component {
   }
   render() {
     var liClass = this.props.index % 2 === 0 ? 'spell-item' : 'spell-item alt';
+    var itemSchool = this.props.itemData.school.toLowerCase();
     return (
-      <li className={liClass} data-index={this.props.index}>
+      <li className={liClass} data-index={this.props.index} data-school={itemSchool}>
           <b>{this.props.itemData.name + ' '}</b>
           ({this.props.itemData.level})
           <ul className="list-inline">
