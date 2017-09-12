@@ -85,6 +85,7 @@ class SpellFilters extends Component {
               <option data-val="6">6</option>
               <option data-val="7">7</option>
               <option data-val="8">8</option>
+              <option data-val="9">9</option>
             </select>
           </li>
           <li>

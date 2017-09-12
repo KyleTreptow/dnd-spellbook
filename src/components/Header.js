@@ -15,13 +15,6 @@ class Header extends Component {
         <ul className="list-inline">
           <li>Spellbook</li>
         </ul>
-        <button id="orb" onClick={() => { this.clickOrb() }} >
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
-          <div className="double-bounce3"></div>
-          <div className="double-bounce4"></div>
-          {/*  */}
-        </button>
       </header>
     );
   }
